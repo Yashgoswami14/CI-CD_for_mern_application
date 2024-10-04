@@ -4,7 +4,7 @@ pipeline{
     stages{
        stage('pull the code'){
            steps{
-               git branch: 'compose', url: 'https://github.com/Yashgoswami14/containerized_mern_application'
+               git branch: 'main', url: 'https://github.com/Yashgoswami14/CI-CD_for_mern_application'
            }
        }
        
