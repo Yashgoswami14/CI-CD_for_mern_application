@@ -1,0 +1,37 @@
+version: "3.9"
+services:
+    frontend:
+        container_name: frontend
+        build: ./mern/frontend/
+        ports:
+          - "5173:5173"
+        networks:
+          - demo
+
+    backend:
+        container_name: backend
+        build: ./mern/backend/
+        ports:
+          - "5050:5050"
+        networks:
+          - demo
+        depends_on:
+          - mongodb    
+
+    mongodb:
+        container_name: mongodb
+        image: mongo:latest
+        ports:
+          - "27017:27017"
+        networks:
+          - demo
+        volumes:
+          - /home/ubuntu/backup:/data/db    
+
+networks:
+      demo:
+        driver: bridge  
+     
+volumes:
+  backup:
+    driver: local 
